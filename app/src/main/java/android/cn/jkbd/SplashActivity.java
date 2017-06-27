@@ -15,6 +15,19 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         mCountDownTimer.start();
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch (requestCode) {
+//            case 1:
+//                if (resultCode == RESULT_OK) {
+//                    finish();
+//                }
+//                break;
+//            default:
+//        }
+//    }
+
     CountDownTimer mCountDownTimer =new CountDownTimer(2000,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
@@ -25,11 +38,8 @@ public class SplashActivity extends AppCompatActivity {
         public void onFinish() {
             Intent intent=new Intent(SplashActivity.this,MainActivity.class);
             startActivity(intent);
+            finish();
+//              startActivityForResult(intent,1);
         }
     };
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return super.onKeyDown(keyCode, event);
-    }
 }
