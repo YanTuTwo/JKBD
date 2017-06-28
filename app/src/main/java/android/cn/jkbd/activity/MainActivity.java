@@ -1,5 +1,6 @@
-package android.cn.jkbd;
+package android.cn.jkbd.activity;
 
+import android.cn.jkbd.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
