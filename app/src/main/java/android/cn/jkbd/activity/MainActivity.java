@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(ExamInfo result) {
                         Log.e("main","result="+result);
                         Intent intent=new Intent(MainActivity.this,ExamActivity.class);
-                        intent.putExtra("examInfo",result);
+                        intent.putExtra("aaa",result);
                         startActivity(intent);
                     }
 
