@@ -4,7 +4,7 @@ package android.cn.jkbd.bean;
  * Created by Administrator on 2017/6/28 0028.
  */
 
-public class Roominformation {
+public class ExamInfo {
 
     /**
      * subjectTitle : c1
