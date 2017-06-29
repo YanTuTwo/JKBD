@@ -4,7 +4,7 @@ package android.cn.jkbd.bean;
  * Created by Administrator on 2017/6/28 0028.
  */
 
-public class Qusetion {
+public class Question {
 
     /**
      * id : 3
@@ -27,6 +27,8 @@ public class Qusetion {
     private String item4;
     private String explains;
     private String url;
+
+    private String useranswer;
 
     public int getId() {
         return id;
@@ -98,5 +100,13 @@ public class Qusetion {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getUseranswer() {
+        return useranswer;
+    }
+
+    public void setUseranswer(String useranswer) {
+        this.useranswer = useranswer;
     }
 }
