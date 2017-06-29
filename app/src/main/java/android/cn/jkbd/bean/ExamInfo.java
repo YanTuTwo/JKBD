@@ -1,10 +1,12 @@
 package android.cn.jkbd.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2017/6/28 0028.
  */
 
-public class ExamInfo {
+public class ExamInfo implements Serializable{
 
     /**
      * subjectTitle : c1

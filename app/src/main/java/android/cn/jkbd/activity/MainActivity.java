@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(ExamInfo result) {
                         Log.e("main","result="+result);
+                        Intent intent=new Intent(MainActivity.this,ExamActivity.class);
+                        intent.putExtra("examInfo",result);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("main","error="+error);
                     }
                 });
-        startActivity(new Intent(MainActivity.this,ExamActivity.class));
+
     }
 
     public void exit(View view) {
