@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/main">
 
@@ -17,7 +19,7 @@
         android:id="@+id/txt_examinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/exam_title"
+        tools:text="@string/exam_title"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="15dp"
         android:textColor="#000000"/>
@@ -47,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="这个标记的含义是？"
+            tools:text="这个标记的含义是？"
             android:textColor="#000000"
             android:textSize="18sp" />
     </LinearLayout>
@@ -68,7 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="A.\nB.\nC.\nD." />
+            android:text="A.\nB.\nC.\nD."
+            />
     </LinearLayout>
 
     <LinearLayout

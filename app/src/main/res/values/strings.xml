@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">JKBD</string>
+    <string name="app_name">驾考宝典</string>
     <string name="exam_title">"考试科目: c1\n考题数量:100\n考试时间:10分钟"</string>
 </resources>

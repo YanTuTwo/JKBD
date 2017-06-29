@@ -19,4 +19,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(MainActivity.this,ExamActivity.class);
         startActivity(intent);
     }
+
+    public void exit(View view) {
+        finish();
+    }
 }
