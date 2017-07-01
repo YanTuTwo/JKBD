@@ -17,6 +17,9 @@ import java.util.List;
  */
 
 public class ExamApplication extends Application {
+    public static String LOAD_EXAM_INFO="load_exam_info";
+    public static String LOAD_EXAM_QUESTION="load_exam_question";
+    public static String LOAD_DATA_SUCCESS="load_data_success";
     ExamInfo mExamInfo;
     List<Exam> mExamList;
     private static ExamApplication istance;
@@ -25,20 +28,14 @@ public class ExamApplication extends Application {
     public void onCreate() {
         super.onCreate();
         istance=this;
-        biz=new ExamBiz();
-        intiData();
+
     }
     public static ExamApplication getInstance(){
         return istance;
     }
 
     private void intiData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                biz.beginExam();
-            }
-        }).start();
+
 
     }
 

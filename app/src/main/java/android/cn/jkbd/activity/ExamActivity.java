@@ -4,10 +4,16 @@ import android.cn.jkbd.ExamApplication;
 import android.cn.jkbd.R;
 import android.cn.jkbd.bean.Exam;
 import android.cn.jkbd.bean.ExamInfo;
+import android.cn.jkbd.biz.ExamBiz;
+import android.cn.jkbd.biz.IExamBiz;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +28,14 @@ import java.util.List;
 public class ExamActivity extends AppCompatActivity {
     TextView tvExamInfo,tv_title,tv_op;
     ImageView mImageView;
+    IExamBiz biz;
+    boolean isLoadExamInfo=false;
+    boolean isLoadQuestions=false;
+
+    LoadExamBroadcast mLoadExamBroadcast;
+    LoadQuestionBroadcast mLoadQuestionBroadcast;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +43,26 @@ public class ExamActivity extends AppCompatActivity {
 //        ExamInfo examInfo =(ExamInfo) getIntent().getSerializableExtra("aaa");
 //        TextView value = (TextView)findViewById(R.id.txt_examinfo);
 //        value.setText(examInfo.toString());
+        mLoadExamBroadcast=new LoadExamBroadcast();
+        mLoadQuestionBroadcast=new LoadQuestionBroadcast();
+        setListenr();
         intView();
-        initData();
+        loadData();
+    }
+
+    private void setListenr() {
+        registerReceiver(mLoadExamBroadcast,new IntentFilter(ExamApplication.LOAD_EXAM_INFO));
+        registerReceiver(mLoadQuestionBroadcast,new IntentFilter(ExamApplication.LOAD_EXAM_QUESTION));
+    }
+
+    private void loadData() {
+        biz=new ExamBiz();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                biz.beginExam();
+            }
+        }).start();
     }
 
     private void intView() {
@@ -41,6 +73,7 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        if(isLoadExamInfo&&isLoadExamInfo){
         ExamInfo examInfo=ExamApplication.getInstance().getmExamInfo();
         if (examInfo!=null){
             showData(examInfo);
@@ -49,6 +82,7 @@ public class ExamActivity extends AppCompatActivity {
             if (examlist!=null){
                 showExam(examlist);
             }
+        }
     }
 
     private void showExam(List<Exam> examlist) {
@@ -61,5 +95,41 @@ public class ExamActivity extends AppCompatActivity {
     private void showData(ExamInfo examInfo) {
         tvExamInfo.setText(examInfo.toString());
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mLoadExamBroadcast!=null){
+            unregisterReceiver(mLoadExamBroadcast);
+        }
+        if (mLoadQuestionBroadcast!=null){
+            unregisterReceiver(mLoadQuestionBroadcast);
+        }
+    }
+
+    class LoadExamBroadcast extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean isSucces=intent.getBooleanExtra(ExamApplication.LOAD_DATA_SUCCESS,false);
+            Log.e("LoadExamBroadcast","LoadExamBroadcast,isSucess="+isSucces);
+            if(isSucces){
+                isLoadExamInfo=true;
+
+            }initData();
+        }
+    }
+    class LoadQuestionBroadcast extends  BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean isSucces=intent.getBooleanExtra(ExamApplication.LOAD_DATA_SUCCESS,false);
+            Log.e("LoadQuestionBroadcast","LoadQuestionBroadcast,isSucess="+isSucces);
+            if(isSucces){
+                isLoadQuestions=true;
+
+            }initData();
+        }
     }
 }

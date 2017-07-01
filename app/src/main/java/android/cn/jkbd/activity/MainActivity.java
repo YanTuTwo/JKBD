@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     public void test(View view) {
 
         Intent intent=new Intent(MainActivity.this,ExamActivity.class);
-//        intent.putExtra("aaa",result);
         startActivity(intent);
     }
 
