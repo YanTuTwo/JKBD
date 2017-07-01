@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -53,6 +55,7 @@ public class ExamActivity extends AppCompatActivity {
         Exam exam=examlist.get(0);
         tv_title.setText(exam.getQuestion());
         tv_op.setText("A."+exam.getItem1()+"\n"+"B."+exam.getItem2()+"\n"+"C."+exam.getItem3()+"\n"+"D."+exam.getItem4());
+        Picasso.with(ExamActivity.this).load(exam.getUrl()).into(mImageView);
     }
 
     private void showData(ExamInfo examInfo) {
