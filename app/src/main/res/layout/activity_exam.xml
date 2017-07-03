@@ -56,7 +56,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_exam_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1."
@@ -146,6 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="上一题"
+            android:onClick="preExam"
             android:drawableLeft="@mipmap/exam_pre32x32"
             android:background="@null"/>
 
@@ -154,6 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="下一题"
+            android:onClick="nextExam"
             android:layout_alignParentRight="true"
             android:drawableLeft="@mipmap/exam_next32x32"
             android:background="@null"
