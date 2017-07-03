@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -29,8 +30,9 @@ import java.util.List;
 
 public class ExamActivity extends AppCompatActivity {
     TextView tvExamInfo,tv_title,tv_op,tv_load;
-    LinearLayout linearloading;
+    LinearLayout linearLoading;
     ImageView mImageView;
+    ProgressBar dialog;
     IExamBiz biz;
     boolean isLoadExamInfo=false;
     boolean isLoadQuestions=false;
@@ -50,6 +52,7 @@ public class ExamActivity extends AppCompatActivity {
         mLoadQuestionBroadcast=new LoadQuestionBroadcast();
         setListenr();
         intView();
+        biz=new ExamBiz();
         loadData();
     }
 
@@ -59,7 +62,9 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        biz=new ExamBiz();
+        linearLoading.setEnabled(false);
+        dialog.setVisibility(View.VISIBLE);
+        tv_load.setText("下载数据...");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -69,18 +74,25 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void intView() {
-        linearloading=(LinearLayout)findViewById(R.id.layout_loading);
+        linearLoading=(LinearLayout)findViewById(R.id.layout_loading);
+        dialog=(ProgressBar) findViewById(R.id.load_dialog);
         tvExamInfo=(TextView)findViewById(R.id.tv_examinfo);
         tv_title=(TextView)findViewById(R.id.tv_title);
         tv_op=(TextView)findViewById(R.id.tv_op);
         tv_load=(TextView) findViewById(R.id.tv_load);
         mImageView=(ImageView)findViewById(R.id.iv_exam_image);
+        linearLoading.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadData();
+            }
+        });
     }
 
     private void initData() {
         if (isLoadQuestionsRecevier&&isLoadExamInfoRecevier) {
             if (isLoadExamInfo && isLoadExamInfo) {
-                linearloading.setVisibility(View.GONE);
+                linearLoading.setVisibility(View.GONE);
                 ExamInfo examInfo = ExamApplication.getInstance().getmExamInfo();
                 if (examInfo != null) {
                     showData(examInfo);
@@ -90,6 +102,8 @@ public class ExamActivity extends AppCompatActivity {
                     showExam(examlist);
                 }
             }else{
+                linearLoading.setEnabled(true);
+                dialog.setVisibility(View.GONE);
                 tv_load.setText("下载失败，点击重新下载");
             }
         }
