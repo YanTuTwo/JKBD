@@ -171,7 +171,17 @@ public class ExamActivity extends AppCompatActivity {
                 tv_op.setText("A." + exam.getItem1() + "\n" + "B." + exam.getItem2() );
                 cb_03.setVisibility(View.GONE);
                 cb_04.setVisibility(View.GONE);
+            }else {
+                cb_03.setVisibility(View.VISIBLE);
+                cb_04.setVisibility(View.VISIBLE);
             }
+            resetOptions();
+        }
+    }
+
+    private void resetOptions() {
+        for (CheckBox cb : cbs) {
+            cb.setChecked(false);
         }
     }
 

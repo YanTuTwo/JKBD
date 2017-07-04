@@ -28,7 +28,7 @@ public class Exam {
     private String explains;
     private String url;
 
-    private String useranswer;
+    private String userAnswer;
 
     public int getId() {
         return id;
@@ -102,11 +102,11 @@ public class Exam {
         this.url = url;
     }
 
-    public String getUseranswer() {
-        return useranswer;
+    public String getuserAnswer() {
+        return userAnswer;
     }
 
-    public void setUseranswer(String useranswer) {
-        this.useranswer = useranswer;
+    public void setuserAnswer(String useranswer) {
+        this.userAnswer = useranswer;
     }
 }
