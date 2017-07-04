@@ -155,6 +155,7 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void showExam(Exam exam) {
+        Log.e("showExam","showExam,exam="+exam);
         if (exam!=null) {
             tvNO.setText(biz.getExamIndex());
             tv_title.setText(exam.getQuestion());
@@ -176,12 +177,22 @@ public class ExamActivity extends AppCompatActivity {
                 cb_04.setVisibility(View.VISIBLE);
             }
             resetOptions();
+
         }
     }
 
     private void resetOptions() {
         for (CheckBox cb : cbs) {
             cb.setChecked(false);
+        }
+    }
+
+    private void saveUserAnswer(){
+
+        for (int i = 0; i < cbs.length; i++) {
+            if (cbs[i].isChecked()){
+                biz.getExam().setUserAnswer(String.valueOf(i+1));
+            }
         }
     }
 
@@ -202,10 +213,12 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     public void preExam(View view) {
+        saveUserAnswer();
         showExam(biz.preQuestion());
     }
 
     public void nextExam(View view) {
+        saveUserAnswer();
         showExam(biz.nextQuestion());
     }
 

@@ -6,6 +6,22 @@ package android.cn.jkbd.bean;
 
 public class Exam {
 
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "id=" + id +
+                ", question='" + question + '\'' +
+                ", answer='" + answer + '\'' +
+                ", item1='" + item1 + '\'' +
+                ", item2='" + item2 + '\'' +
+                ", item3='" + item3 + '\'' +
+                ", item4='" + item4 + '\'' +
+                ", explains='" + explains + '\'' +
+                ", url='" + url + '\'' +
+                ", userAnswer='" + userAnswer + '\'' +
+                '}';
+    }
+
     /**
      * id : 3
      * question : 这个标志是何含义？
@@ -102,11 +118,12 @@ public class Exam {
         this.url = url;
     }
 
-    public String getuserAnswer() {
+    public String getUserAnswer() {
         return userAnswer;
     }
 
-    public void setuserAnswer(String useranswer) {
+    public void setUserAnswer(String useranswer) {
         this.userAnswer = useranswer;
     }
+
 }
