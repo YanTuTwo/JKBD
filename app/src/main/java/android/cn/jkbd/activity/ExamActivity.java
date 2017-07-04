@@ -177,7 +177,11 @@ public class ExamActivity extends AppCompatActivity {
                 cb_04.setVisibility(View.VISIBLE);
             }
             resetOptions();
-
+            String userAnswer=exam.getUserAnswer();
+            if (userAnswer!=null && !userAnswer.equals("")){
+                int userCB=Integer.parseInt(userAnswer)-1;
+                cbs[userCB].setChecked(true);
+            }
         }
     }
 
