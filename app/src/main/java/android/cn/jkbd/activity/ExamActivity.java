@@ -27,13 +27,15 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Administrator on 2017/6/29.
  */
 
 public class ExamActivity extends AppCompatActivity {
-    TextView tvExamInfo,tv_title,tv_op,tv_load,tvNO;
+    TextView tvExamInfo,tv_title,tv_op,tv_load,tvNO,tvtime;
     CheckBox cb_01,cb_02,cb_03,cb_04;
     CheckBox[] cbs=new CheckBox[4];
     LinearLayout linearLoading;
@@ -85,6 +87,7 @@ public class ExamActivity extends AppCompatActivity {
         tvExamInfo=(TextView)findViewById(R.id.tv_examinfo);
         tv_title=(TextView)findViewById(R.id.tv_title);
         tv_op=(TextView)findViewById(R.id.tv_op);
+        tvtime=(TextView)findViewById(R.id.tv_time);
         cb_01=(CheckBox)findViewById(R.id.cb_01);
         cb_02=(CheckBox)findViewById(R.id.cb_02);
         cb_03=(CheckBox)findViewById(R.id.cb_03);
@@ -148,6 +151,7 @@ public class ExamActivity extends AppCompatActivity {
                     showData(examInfo);
                 }
                 showExam(biz.getExam());
+                initTimer(examInfo);
             }else{
                 linearLoading.setEnabled(true);
                 dialog.setVisibility(View.GONE);
@@ -155,6 +159,40 @@ public class ExamActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void initTimer(ExamInfo examInfo) {
+        int sumTime=examInfo.getLimitTime()*60*1000;
+//        int sumTime=60*1000;
+        final long overTime=(sumTime+System.currentTimeMillis());
+        final Timer timer=new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                long l=overTime-System.currentTimeMillis();
+                final long min=(long)l/1000/60;
+                final long sec=(long)l/1000%60;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvtime.setText("剩余时间"+min+"分"+sec+"秒");
+                    }
+                });
+            }
+        },0,1000);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                timer.cancel();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commit(null);
+                    }
+                });
+            }
+        },sumTime);
+    }
+
 
     private void showExam(Exam exam) {
         Log.e("showExam","showExam,exam="+exam);

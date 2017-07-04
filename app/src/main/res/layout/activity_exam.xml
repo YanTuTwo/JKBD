@@ -48,7 +48,14 @@
         android:background="#807d7d"
         android:layout_margin="5dp"
         />
-
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="剩余时间：9分53秒"
+        android:textColor="#000"
+        android:gravity="center_horizontal"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,7 +77,7 @@
             android:layout_weight="1"
             tools:text="这个标记的含义是？"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ImageView
@@ -89,6 +96,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="17sp"
+            android:textColor="#000"
             />
     </LinearLayout>
 
