@@ -98,7 +98,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/cb_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -106,21 +106,21 @@
             android:text="A" />
 
         <CheckBox
-            android:id="@+id/checkBox3"
+            android:id="@+id/cb_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="B" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/cb_03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="C" />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/cb_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

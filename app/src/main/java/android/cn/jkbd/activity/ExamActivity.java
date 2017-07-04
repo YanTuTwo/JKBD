@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -30,6 +31,7 @@ import java.util.List;
 
 public class ExamActivity extends AppCompatActivity {
     TextView tvExamInfo,tv_title,tv_op,tv_load,tvNO;
+    CheckBox cb_01,cb_02,cb_03,cb_04;
     LinearLayout linearLoading;
     ImageView mImageView;
     ProgressBar dialog;
@@ -79,6 +81,10 @@ public class ExamActivity extends AppCompatActivity {
         tvExamInfo=(TextView)findViewById(R.id.tv_examinfo);
         tv_title=(TextView)findViewById(R.id.tv_title);
         tv_op=(TextView)findViewById(R.id.tv_op);
+        cb_01=(CheckBox)findViewById(R.id.cb_01);
+        cb_02=(CheckBox)findViewById(R.id.cb_02);
+        cb_03=(CheckBox)findViewById(R.id.cb_03);
+        cb_04=(CheckBox)findViewById(R.id.cb_04);
         tv_load=(TextView) findViewById(R.id.tv_load);
         tvNO=(TextView)findViewById(R.id.tv_exam_no);
         mImageView=(ImageView)findViewById(R.id.iv_exam_image);
@@ -120,7 +126,11 @@ public class ExamActivity extends AppCompatActivity {
             }else{
                 mImageView.setVisibility(View.GONE);
             }
-
+            if (exam.getItem3().equals("")&&exam.getItem4().equals("")){
+                tv_op.setText("A." + exam.getItem1() + "\n" + "B." + exam.getItem2() );
+                cb_03.setVisibility(View.GONE);
+                cb_04.setVisibility(View.GONE);
+            }
         }
     }
 
