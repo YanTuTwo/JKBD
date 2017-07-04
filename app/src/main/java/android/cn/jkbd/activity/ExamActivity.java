@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -32,6 +33,7 @@ import java.util.List;
 public class ExamActivity extends AppCompatActivity {
     TextView tvExamInfo,tv_title,tv_op,tv_load,tvNO;
     CheckBox cb_01,cb_02,cb_03,cb_04;
+    CheckBox[] cbs=new CheckBox[4];
     LinearLayout linearLoading;
     ImageView mImageView;
     ProgressBar dialog;
@@ -85,6 +87,10 @@ public class ExamActivity extends AppCompatActivity {
         cb_02=(CheckBox)findViewById(R.id.cb_02);
         cb_03=(CheckBox)findViewById(R.id.cb_03);
         cb_04=(CheckBox)findViewById(R.id.cb_04);
+        cbs[0]=cb_01;
+        cbs[1]=cb_02;
+        cbs[2]=cb_03;
+        cbs[3]=cb_04;
         tv_load=(TextView) findViewById(R.id.tv_load);
         tvNO=(TextView)findViewById(R.id.tv_exam_no);
         mImageView=(ImageView)findViewById(R.id.iv_exam_image);
@@ -94,7 +100,42 @@ public class ExamActivity extends AppCompatActivity {
                 loadData();
             }
         });
+        cb_01.setOnCheckedChangeListener(listener);
+        cb_02.setOnCheckedChangeListener(listener);
+        cb_03.setOnCheckedChangeListener(listener);
+        cb_04.setOnCheckedChangeListener(listener);
     }
+
+    CompoundButton.OnCheckedChangeListener listener=new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    int userAnswer=0;
+                    switch (buttonView.getId()){
+                        case R.id.cb_01:
+                            userAnswer=1;
+                            break;
+                        case R.id.cb_02:
+                            userAnswer=2;
+                            break;
+                        case R.id.cb_03:
+                            userAnswer=3;
+                            break;
+                        case R.id.cb_04:
+                            userAnswer=4;
+                            break;
+                    }
+                    Log.e("checkedChange","usera="+userAnswer+",isChecked"+isChecked);
+                    if (userAnswer>0){
+                        for (CheckBox cb:cbs) {
+                            cb.setChecked(false);
+                        }
+                        cbs[userAnswer-1].setChecked(true);
+                    }
+                }
+
+            }
+    };
 
     private void initData() {
         if (isLoadQuestionsRecevier&&isLoadExamInfoRecevier) {
