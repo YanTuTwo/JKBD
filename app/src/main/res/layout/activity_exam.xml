@@ -136,6 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="交卷"
+            android:onClick="commit"
             android:drawableLeft="@mipmap/exam_commit32x32"
             android:layout_below="@+id/button5"
             android:layout_alignParentRight="true"
