@@ -6,6 +6,7 @@ import android.cn.jkbd.bean.Exam;
 import android.cn.jkbd.bean.ExamInfo;
 import android.cn.jkbd.biz.ExamBiz;
 import android.cn.jkbd.biz.IExamBiz;
+import android.cn.jkbd.view.QuestionAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,10 +20,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -41,7 +44,9 @@ public class ExamActivity extends AppCompatActivity {
     LinearLayout linearLoading;
     ImageView mImageView;
     ProgressBar dialog;
+    Gallery mGallery;
     IExamBiz biz;
+    QuestionAdapter mAdapter;
     boolean isLoadExamInfo=false;
     boolean isLoadQuestions=false;
 
@@ -109,6 +114,7 @@ public class ExamActivity extends AppCompatActivity {
         cb_02.setOnCheckedChangeListener(listener);
         cb_03.setOnCheckedChangeListener(listener);
         cb_04.setOnCheckedChangeListener(listener);
+        mGallery=(Gallery) findViewById(R.id.gallery);
     }
 
     CompoundButton.OnCheckedChangeListener listener=new CompoundButton.OnCheckedChangeListener() {
@@ -149,9 +155,11 @@ public class ExamActivity extends AppCompatActivity {
                 ExamInfo examInfo = ExamApplication.getInstance().getmExamInfo();
                 if (examInfo != null) {
                     showData(examInfo);
+                    initTimer(examInfo);
                 }
+                initGallery();
                 showExam(biz.getExam());
-                initTimer(examInfo);
+
             }else{
                 linearLoading.setEnabled(true);
                 dialog.setVisibility(View.GONE);
@@ -160,9 +168,14 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
+    private void initGallery() {
+        mAdapter=new QuestionAdapter(this);
+        mGallery.setAdapter(mAdapter);
+    }
+
     private void initTimer(ExamInfo examInfo) {
-        int sumTime=examInfo.getLimitTime()*60*1000;
-//        int sumTime=60*1000;
+//        int sumTime=examInfo.getLimitTime()*60*1000;
+        int sumTime=2*60*1000;
         final long overTime=(sumTime+System.currentTimeMillis());
         final Timer timer=new Timer();
         timer.schedule(new TimerTask() {
@@ -175,6 +188,10 @@ public class ExamActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         tvtime.setText("剩余时间"+min+"分"+sec+"秒");
+                        if (min==1&&sec==0){
+                            Toast.makeText(getApplicationContext(), "距离考试结束还有1分钟",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
