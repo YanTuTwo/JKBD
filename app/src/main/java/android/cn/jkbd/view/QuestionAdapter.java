@@ -38,7 +38,6 @@ public class QuestionAdapter extends BaseAdapter {
         return 0;
     }
 
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view=View.inflate(mContext, R.layout.item_question,null);
         TextView tvNo=(TextView) view.findViewById(R.id.tv_no);
