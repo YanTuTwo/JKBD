@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ques24x24" />
+        app:srcCompat="@mipmap/question_24px" />
 
     <TextView
         android:id="@+id/tv_no"

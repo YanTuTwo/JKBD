@@ -247,7 +247,18 @@ public class ExamActivity extends AppCompatActivity {
             if (userAnswer!=null && !userAnswer.equals("")){
                 int userCB=Integer.parseInt(userAnswer)-1;
                 cbs[userCB].setChecked(true);
+                setOption(false);
             }
+            else {
+                setOption(true);
+            }
+
+        }
+    }
+
+    private void setOption(boolean a) {
+        for (int i=0;i<cbs.length;i++){
+            cbs[i].setEnabled(a);
         }
     }
 
@@ -269,6 +280,7 @@ public class ExamActivity extends AppCompatActivity {
         Log.e("save","saveUserAnswer，biz.getExam()="+biz.getExam());
         biz.getExam().setUserAnswer("");
         mAdapter.notifyDataSetChanged();
+
 
     }
 

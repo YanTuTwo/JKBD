@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
         <ProgressBar
             android:id="@+id/load_dialog"
             android:layout_width="wrap_content"
@@ -185,6 +186,22 @@
                     />
 
             </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_Answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="答案：A"
+                android:textColor="#e91313"
+                android:textSize="15sp"
+            />
+            <TextView
+                android:id="@+id/tv_Explains"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="666666666666"
+                android:textColor="#000"
+                android:textSize="15sp"
+                />
         </LinearLayout>
     </ScrollView>
 
