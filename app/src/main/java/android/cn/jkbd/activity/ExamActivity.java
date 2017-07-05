@@ -183,8 +183,8 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void initTimer(ExamInfo examInfo) {
-//        int sumTime=examInfo.getLimitTime()*60*1000;
-        int sumTime=2*60*1000;
+        int sumTime=examInfo.getLimitTime()*60*1000;
+//        int sumTime=2*60*1000;
         final long overTime=(sumTime+System.currentTimeMillis());
         final Timer timer=new Timer();
         timer.schedule(new TimerTask() {
@@ -262,8 +262,14 @@ public class ExamActivity extends AppCompatActivity {
         for (int i = 0; i < cbs.length; i++) {
             if (cbs[i].isChecked()){
                 biz.getExam().setUserAnswer(String.valueOf(i+1));
+                mAdapter.notifyDataSetChanged();
+                return;
             }
         }
+        Log.e("save","saveUserAnswer，biz.getExam()="+biz.getExam());
+        biz.getExam().setUserAnswer("");
+        mAdapter.notifyDataSetChanged();
+
     }
 
     private void showData(ExamInfo examInfo) {
