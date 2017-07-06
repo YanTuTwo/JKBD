@@ -39,7 +39,7 @@ import java.util.TimerTask;
  */
 
 public class ExamActivity extends AppCompatActivity {
-    TextView tvExamInfo,tv_title,tv_op,tv_load,tvNO,tvtime;
+    TextView tvExamInfo,tv_title,tv_op,tv_load,tvNO,tvtime,tv_Answer,tv_Explains;
     CheckBox cb_01,cb_02,cb_03,cb_04;
     CheckBox[] cbs=new CheckBox[4];
     LinearLayout linearLoading;
@@ -105,6 +105,8 @@ public class ExamActivity extends AppCompatActivity {
         tv_load=(TextView) findViewById(R.id.tv_load);
         tvNO=(TextView)findViewById(R.id.tv_exam_no);
         mImageView=(ImageView)findViewById(R.id.iv_exam_image);
+        tv_Answer=(TextView)findViewById(R.id.tv_Answer);
+        tv_Explains=(TextView)findViewById(R.id.tv_Explains) ;
         linearLoading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -248,10 +250,37 @@ public class ExamActivity extends AppCompatActivity {
                 int userCB=Integer.parseInt(userAnswer)-1;
                 cbs[userCB].setChecked(true);
                 setOption(false);
+                if (userAnswer.equals(exam.getAnswer())){
+                    tv_Answer.setTextColor(this.getResources().getColor(R.color.colorgreen));
+                }else {
+                    tv_Answer.setTextColor(this.getResources().getColor(R.color.colorAccent));
+                }
+                changeResult(Integer.parseInt(exam.getAnswer()));
+                tv_Explains.setText("解析："+exam.getExplains());
             }
             else {
                 setOption(true);
+                tv_Answer.setText("");
+                tv_Explains.setText("");
             }
+
+        }
+    }
+
+    private void changeResult(int answer) {
+        switch (answer){
+            case 1:
+                tv_Answer.setText("答案：A");
+                break;
+            case 2:
+                tv_Answer.setText("答案：B");
+                break;
+            case 3:
+                tv_Answer.setText("答案：C");
+                break;
+            case 4:
+                tv_Answer.setText("答案：D");
+                break;
 
         }
     }
