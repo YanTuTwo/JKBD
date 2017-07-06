@@ -10,8 +10,8 @@
     <ImageView
         android:id="@+id/iv_quesion"
         android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         app:srcCompat="@mipmap/question_24px" />
 
     <TextView
@@ -19,5 +19,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="第1题" />
+        android:text="第1题"
+        android:textSize="10sp"/>
 </LinearLayout>
