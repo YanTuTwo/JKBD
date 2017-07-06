@@ -1,7 +1,7 @@
-package android.cn.jkbd.until;
+package zjjandroid.cn.jkbd.until;
 
-import android.cn.jkbd.bean.Exam;
-import android.cn.jkbd.bean.Result;
+import zjjandroid.cn.jkbd.bean.Exam;
+import zjjandroid.cn.jkbd.bean.Result;
 import android.util.Log;
 
 import com.google.gson.Gson;

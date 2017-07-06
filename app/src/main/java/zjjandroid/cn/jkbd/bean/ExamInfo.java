@@ -1,4 +1,4 @@
-package android.cn.jkbd.bean;
+package zjjandroid.cn.jkbd.bean;
 
 import java.io.Serializable;
 

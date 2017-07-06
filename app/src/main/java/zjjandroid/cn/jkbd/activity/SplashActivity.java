@@ -1,6 +1,6 @@
-package android.cn.jkbd.activity;
+package zjjandroid.cn.jkbd.activity;
 
-import android.cn.jkbd.R;
+import zjjandroid.cn.jkbd.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;

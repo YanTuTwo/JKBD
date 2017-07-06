@@ -1,14 +1,9 @@
-package android.cn.jkbd;
+package zjjandroid.cn.jkbd;
 
 import android.app.Application;
-import android.cn.jkbd.bean.Exam;
-import android.cn.jkbd.bean.ExamInfo;
-import android.cn.jkbd.bean.Result;
-import android.cn.jkbd.biz.ExamBiz;
-import android.cn.jkbd.biz.IExamBiz;
-import android.cn.jkbd.until.OkHttpUtils;
-import android.cn.jkbd.until.ResultUtils;
-import android.util.Log;
+import zjjandroid.cn.jkbd.bean.Exam;
+import zjjandroid.cn.jkbd.bean.ExamInfo;
+import zjjandroid.cn.jkbd.biz.IExamBiz;
 
 import java.util.List;
 

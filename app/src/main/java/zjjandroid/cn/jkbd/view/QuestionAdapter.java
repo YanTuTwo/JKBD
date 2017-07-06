@@ -1,8 +1,8 @@
-package android.cn.jkbd.view;
+package zjjandroid.cn.jkbd.view;
 
-import android.cn.jkbd.ExamApplication;
-import android.cn.jkbd.R;
-import android.cn.jkbd.bean.Exam;
+import zjjandroid.cn.jkbd.ExamApplication;
+import zjjandroid.cn.jkbd.R;
+import zjjandroid.cn.jkbd.bean.Exam;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;

@@ -1,4 +1,4 @@
-package android.cn.jkbd.bean;
+package zjjandroid.cn.jkbd.bean;
 
 /**
  * Created by Administrator on 2017/6/28 0028.

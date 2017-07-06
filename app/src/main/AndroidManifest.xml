@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.cn.jkbd">
+    package="zjjandroid.cn.jkbd">
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name=".ExamApplication"
+        android:name="zjjandroid.cn.jkbd.ExamApplication"
         android:allowBackup="true"
         android:icon="@mipmap/myicon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="zjjandroid.cn.jkbd.activity.MainActivity">
 
         </activity>
-        <activity android:name=".activity.ExamActivity">
+        <activity android:name="zjjandroid.cn.jkbd.activity.ExamActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.SplashActivity" >
+        <activity android:name="zjjandroid.cn.jkbd.activity.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

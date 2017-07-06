@@ -1,12 +1,9 @@
-package android.cn.jkbd.activity;
+package zjjandroid.cn.jkbd.activity;
 
-import android.cn.jkbd.R;
-import android.cn.jkbd.bean.ExamInfo;
-import android.cn.jkbd.until.OkHttpUtils;
+import zjjandroid.cn.jkbd.R;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {

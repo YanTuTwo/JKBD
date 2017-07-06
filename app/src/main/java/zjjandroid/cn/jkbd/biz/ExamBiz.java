@@ -1,9 +1,9 @@
-package android.cn.jkbd.biz;
+package zjjandroid.cn.jkbd.biz;
 
-import android.cn.jkbd.ExamApplication;
-import android.cn.jkbd.bean.Exam;
-import android.cn.jkbd.dao.ExamDao;
-import android.cn.jkbd.dao.IExamDao;
+import zjjandroid.cn.jkbd.ExamApplication;
+import zjjandroid.cn.jkbd.bean.Exam;
+import zjjandroid.cn.jkbd.dao.ExamDao;
+import zjjandroid.cn.jkbd.dao.IExamDao;
 
 import java.util.List;
 
@@ -53,8 +53,10 @@ public class ExamBiz implements IExamBiz {
 
     @Override
     public Exam nextQuestion() {
-        if (examList!=null&&examIndex<examList.size()-1){
-            examIndex++;
+        if (examList!=null){
+            if (examIndex<examList.size()-1){
+                examIndex++;
+            }
             return examList.get(examIndex);
         }else{
             return null;
@@ -63,8 +65,10 @@ public class ExamBiz implements IExamBiz {
 
     @Override
     public Exam preQuestion() {
-        if (examList!=null&&examIndex>0){
-            examIndex--;
+        if (examList!=null){
+            if(examIndex>0){
+                examIndex--;
+            }
             return examList.get(examIndex);
         }else{
             return null;
